@@ -19,18 +19,20 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Searchbar />
-        <div className="row">
-          {employees.map(employee =>(
-              <EmployeeCard
-                firstName={employee.firstName}
-                lastName={employee.lastName}
-                image={employee.image}
-                department={employee.department}
-                position={employee.position}
-                email={employee.email}
-                ext={employee.ext}
-              />
-          ))}
+        <div className="container">
+          <div className="row">
+            {this.state.employees.map(employee =>(
+                <EmployeeCard
+                  firstName={employee.firstName}
+                  lastName={employee.lastName}
+                  image={employee.image}
+                  department={employee.department}
+                  position={employee.position}
+                  email={employee.email}
+                  ext={employee.ext}
+                />
+            ))}
+          </div>
         </div>
         <Footer />
       </div>
