@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "department": "Administration",
+    "position": "CEO",
+    "email": "email@company.net",
+    "ext": "1234"
+  },
+  {
+    "id": 2,
+    "firstName": "John",
+    "lastName": "Doe",
+    "department": "Administration",
+    "position": "CFO",
+    "email": "email@company.net",
+    "ext": "1234"
+  }
+]
