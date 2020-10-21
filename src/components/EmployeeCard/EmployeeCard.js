@@ -4,7 +4,7 @@ import "./employeeStyle.css";
 function EmployeeCard (props) {
   return (
     <div className="card">
-      <img className="card-img-top" alt={props.name} src={props.image} />
+      <img className="card-img-top" alt={props.image} src={props.image} />
       <div className="card-body content">
         <h5>{props.firstName} {props.lastName}</h5>
         <ul>
