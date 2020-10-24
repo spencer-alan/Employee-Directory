@@ -1,9 +1,11 @@
 import React from "react";
 import Searchbar from "./components/SearchBar/Searchbar";
+import Sort from "./components/Sort/Sort";
 import EmployeeCard from "./components/EmployeeCard/EmployeeCard";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Row from "./components/Row/Row";
+import Col from "./components/Column/Column"
 import Container from "./components/Container/Container";
 import API from "./utils/API";
 // import allEmployees from "./employee.json";
@@ -14,6 +16,7 @@ class App extends React.Component {
     initialEmployees: [],
     displayEmployees: [],
     search: "",
+    sort: ""
   };
 
   componentDidMount() {
@@ -50,6 +53,50 @@ class App extends React.Component {
     });
   };
 
+  sortEmpAscending = () => {
+    const sortedEmployees = [].concat(this.state.initialEmployees)
+      .sort((a, b) => a.name.first < b.name.first ? 1 : -1);
+
+      return this.setState({
+        ...this.state,
+        displayEmployees: sortedEmployees
+      });
+  }
+
+  sortEmpDecending = () => {
+    const sortedEmployees = [].concat(this.state.initialEmployees)
+      .sort((a, b) => a.name.first > b.name.first ? 1 : -1);
+
+      return this.setState({
+        ...this.state,
+        displayEmployees: sortedEmployees
+      });
+  }
+
+  handleSortChange = event => {
+    event.preventDefault();
+    const value = event.target.value;
+    this.setState({
+      ...this.state,
+      sort: value
+    })
+    console.log(this.state.sort);
+  }
+
+  handleSort = event => {
+    event.preventDefault();
+    const value = event.target.getAttribute("value");
+    this.setState({
+      ...this.state,
+      sort: value
+    })
+    if (this.state.sort === "decending") {
+      this.sortEmpDecending();
+    } else if (this.state.sort === "ascending") {
+      this.sortEmpAscending();
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -57,10 +104,21 @@ class App extends React.Component {
         <Container>
           <p>{this.state.search}</p>
           <Row>
-            <Searchbar
-              handleInputChange={this.handleInputChange}
-              searchEmployee={this.searchEmployee}
-            />
+            <Col size="8">
+              <Searchbar
+                handleInputChange={this.handleInputChange}
+                searchEmployee={this.searchEmployee}
+              />
+            </Col>
+            <Col size="4">
+              <Sort
+                value={this.state.sort}
+                handleSort={this.handleSort}
+                onChange={this.handleSortChange}
+                sortA-Z={this.sortEmpDecending}
+                sortZ-A={this.sortEmpAscending}
+              />
+            </Col>
           </Row>
         </Container>
         <Container>
