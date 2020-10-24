@@ -4,22 +4,23 @@ import "./employeeStyle.css";
 function EmployeeCard (props) {
   return (
     <div className="col-3">
-      <div className="card">
-        <img className="card-img-top" alt={props.image} src={props.image} />
+      <div className="card" key={props.id}>
+        <img 
+          className="card-img-top" 
+          alt="Profile Placeholder" 
+          src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" 
+        />
         <div className="card-body">
           <h5 className="card-title">{props.firstName} {props.lastName}</h5>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
-              <strong>Department:</strong> {props.department}
-            </li>
-            <li className="list-group-item">
-              <strong>Position:</strong> {props.position}
+              <strong>Username:</strong> {props.username}
             </li>
             <li className="list-group-item">
               <strong>Email Address:</strong> {props.email}
             </li>
             <li className="list-group-item">
-              <strong>Ext.:</strong> {props.ext}
+              <strong>Cell:</strong> {props.phone}
             </li>
           </ul>
         </div>
